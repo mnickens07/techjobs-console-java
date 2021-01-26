@@ -102,6 +102,7 @@ public class TechJobs {
                 System.out.println("Invalid choice. Try again.");
             } else {
                 validChoice = true;
+
             }
 
         } while(!validChoice);
@@ -110,10 +111,32 @@ public class TechJobs {
     }
 
     // Print a list of jobs
+//    It’s an arraylist of hash maps, (kinda like an array of objects in js)
+//    loop through someJobs(arraylist on line 117), and then loop through each individual hashmap (jobs.entrySet on line 119)
+//    and then print out each key and value(line 123)
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-        for (HashMap<String, String> jobs : JobData.findAll()) {
-
-            System.out.println(JobData.findAll().get(jobs.entrySet().size()));
+        for (HashMap<String, String> job : someJobs) {
+            for(Map.Entry<String, String> entry : job.entrySet()){
+//                if (someJobs.contains(entry)){
+//                    System.out.println("Your location is not listed. Try again.");
+//                }else {
+                    System.out.println(entry.getKey() + ": " + entry.getValue());
+//                }
+            }
+                System.out.println("*****");
         }
+
+    }
+
+    public static ArrayList<HashMap<String, String>> findByValue(String row, String value){
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        for (HashMap<String, String> column : jobs){
+//                String aValue = row.get(row);
+
+
+        }
+
+        return jobs;
     }
 }
