@@ -62,9 +62,16 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                    ArrayList<HashMap<String, String>> returnFromFindByValue = JobData.findAll();
+                    printJobs(returnFromFindByValue);
+//                    System.out.println("Search all fields not yet implemented.");
                 } else {
-                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+                    ArrayList<HashMap<String, String>> returnFromFindByColumnAndValue = JobData.findByColumnAndValue(searchField, searchTerm);
+                    if(returnFromFindByColumnAndValue.size()>0) {
+                        printJobs(returnFromFindByColumnAndValue);
+                    } else {
+                        System.out.println("The " + searchField + " was not found.");
+                    }
                 }
             }
         }
@@ -117,26 +124,12 @@ public class TechJobs {
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
         for (HashMap<String, String> job : someJobs) {
             for(Map.Entry<String, String> entry : job.entrySet()){
-//                if (someJobs.contains(entry)){
-//                    System.out.println("Your location is not listed. Try again.");
-//                }else {
-                    System.out.println(entry.getKey() + ": " + entry.getValue());
-//                }
+                System.out.println(entry.getKey() +": " +entry.getValue());
+//                System.out.println("*****");
             }
-                System.out.println("*****");
+            System.out.println("*****");
         }
 
     }
 
-    public static ArrayList<HashMap<String, String>> findByValue(String row, String value){
-
-        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
-        for (HashMap<String, String> column : jobs){
-//                String aValue = row.get(row);
-
-
-        }
-
-        return jobs;
-    }
 }

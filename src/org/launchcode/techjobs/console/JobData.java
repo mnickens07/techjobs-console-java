@@ -83,6 +83,26 @@ public class JobData {
 
         return jobs;
     }
+    //At this stage, the application will allow users to search a given column of the data for a given String.
+// Your next task is to enable a search that looks for the search term in all of the columns.
+    public static ArrayList<HashMap<String, String>> findByValue(String column, String value){
+//      load data, if not already loaded
+        loadData();
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+//        for (ArrayList<HashMap<String, String>>jobHash: allJobs) {
+            for (HashMap<String, String> jobsHash : allJobs) {
+
+                String aValue = jobsHash.get(column);
+
+                if (aValue.contains(value)) {
+                    jobs.add(jobsHash);
+                }
+//            }
+        }
+        return jobs;
+    }
 
     /**
      * Read in data from a CSV file and store it in a list
