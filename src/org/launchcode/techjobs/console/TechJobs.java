@@ -62,7 +62,8 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    ArrayList<HashMap<String, String>> returnFromFindByValue = JobData.findAll();
+//                    ArrayList<HashMap<String, String>> allColumnSearch = JobData.findByColumnAndValue(searchField, searchTerm);
+                    ArrayList<HashMap<String, String>> returnFromFindByValue = JobData.findByValue( searchTerm);
                     printJobs(returnFromFindByValue);
 //                    System.out.println("Search all fields not yet implemented.");
                 } else {
